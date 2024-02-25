@@ -2,4 +2,4 @@
 
 ## ER-діаграма
 
-![ERD](erd.png)
+![ERD](erd.png "ER-діаграма")
