@@ -49,7 +49,7 @@ class HospitalsController < ApplicationController
 
   # DELETE /hospitals/1 or /hospitals/1.json
   def destroy
-    @hospital.destroy!
+    @hospital.destroy
 
     respond_to do |format|
       format.html { redirect_to hospitals_url, notice: "Hospital was successfully destroyed." }
@@ -65,6 +65,6 @@ class HospitalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hospital_params
-      params.require(:hospital).permit(:name, :country, :city, :phone_number)
+      params.require(:hospital).permit(:title, :country, :city, :telephone)
     end
 end

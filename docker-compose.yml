@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3309:3308"  
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dev
+
+  app:
+    build: .
+    environment:
+      RAILS_ENV: development
+    ports:
+      - '4000:4000'
+    volumes:
+      - ".:/workspace"
+    links:
+      - "mysql"
+
+volumes:
+  dbdata:
+  appdata:

@@ -49,7 +49,7 @@ class DoctorsController < ApplicationController
 
   # DELETE /doctors/1 or /doctors/1.json
   def destroy
-    @doctor.destroy!
+    @doctor.destroy
 
     respond_to do |format|
       format.html { redirect_to doctors_url, notice: "Doctor was successfully destroyed." }

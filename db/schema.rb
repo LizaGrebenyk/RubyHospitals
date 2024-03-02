@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_01_132524) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_02_194806) do
   create_table "appointments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "doctor_id", null: false
     t.bigint "patient_id", null: false
-    t.datetime "date"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
@@ -32,10 +32,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_132524) do
   end
 
   create_table "hospitals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "country"
     t.string "city"
-    t.string "phone_number"
+    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_132524) do
   create_table "medical_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "doctor_id", null: false
     t.bigint "patient_id", null: false
-    t.datetime "date"
+    t.date "date"
     t.string "diagnosis"
     t.text "treatment"
     t.datetime "created_at", null: false

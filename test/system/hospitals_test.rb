@@ -16,8 +16,8 @@ class HospitalsTest < ApplicationSystemTestCase
 
     fill_in "City", with: @hospital.city
     fill_in "Country", with: @hospital.country
-    fill_in "Name", with: @hospital.name
-    fill_in "Phone number", with: @hospital.phone_number
+    fill_in "Telephone", with: @hospital.telephone
+    fill_in "Title", with: @hospital.title
     click_on "Create Hospital"
 
     assert_text "Hospital was successfully created"
@@ -30,8 +30,8 @@ class HospitalsTest < ApplicationSystemTestCase
 
     fill_in "City", with: @hospital.city
     fill_in "Country", with: @hospital.country
-    fill_in "Name", with: @hospital.name
-    fill_in "Phone number", with: @hospital.phone_number
+    fill_in "Telephone", with: @hospital.telephone
+    fill_in "Title", with: @hospital.title
     click_on "Update Hospital"
 
     assert_text "Hospital was successfully updated"

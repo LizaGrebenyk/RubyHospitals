@@ -17,7 +17,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hospital" do
     assert_difference("Hospital.count") do
-      post hospitals_url, params: { hospital: { city: @hospital.city, country: @hospital.country, name: @hospital.name, phone_number: @hospital.phone_number } }
+      post hospitals_url, params: { hospital: { city: @hospital.city, country: @hospital.country, telephone: @hospital.telephone, title: @hospital.title } }
     end
 
     assert_redirected_to hospital_url(Hospital.last)
@@ -34,7 +34,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update hospital" do
-    patch hospital_url(@hospital), params: { hospital: { city: @hospital.city, country: @hospital.country, name: @hospital.name, phone_number: @hospital.phone_number } }
+    patch hospital_url(@hospital), params: { hospital: { city: @hospital.city, country: @hospital.country, telephone: @hospital.telephone, title: @hospital.title } }
     assert_redirected_to hospital_url(@hospital)
   end
 
