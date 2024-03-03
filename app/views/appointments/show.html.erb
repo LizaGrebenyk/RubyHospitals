@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<%= render @appointment %>
+  <h1>Appointment Details</h1>
 
-<div>
-  <%= link_to "Edit this appointment", edit_appointment_path(@appointment) %> |
-  <%= link_to "Back to appointments", appointments_path %>
+  <%= render @appointment %>
 
-  <%= button_to "Destroy this appointment", @appointment, method: :delete %>
+  <div class="d-flex align-items-center gap-2">
+    <%= link_to 'Edit this appointment', edit_appointment_path(@appointment), class: 'btn btn-primary' %>
+    <%= link_to 'Back to appointments', appointments_path, class: 'btn btn-secondary' %>
+    <%= button_to 'Destroy this appointment', appointment_path(@appointment), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark' %>
+  </div>
 </div>

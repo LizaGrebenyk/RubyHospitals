@@ -1,32 +1,32 @@
 <%= form_with(model: appointment) do |form| %>
   <% if appointment.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
 
       <ul>
-        <% appointment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% appointment.errors.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :doctor_id, style: "display: block" %>
-    <%= form.text_field :doctor_id %>
+  <div class="mb-3">
+    <%= form.label :doctor_id, class: 'form-label' %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, ->(doctor) { "#{doctor.name}, #{doctor.specialization}, #{doctor.phone_number}" }, { prompt: 'Select a doctor' }, { class: 'form-select' } %>
   </div>
 
-  <div>
-    <%= form.label :patient_id, style: "display: block" %>
-    <%= form.text_field :patient_id %>
+  <div class="mb-3">
+    <%= form.label :patient_id, class: 'form-label' %>
+    <%= form.collection_select :patient_id, Patient.all, :id, ->(patient) { "#{patient.name}, #{patient.gender}, #{patient.date_of_birth}" }, { prompt: 'Select a patient' }, { class: 'form-select' } %>
   </div>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.date_field :date, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary'%>
   </div>
 <% end %>

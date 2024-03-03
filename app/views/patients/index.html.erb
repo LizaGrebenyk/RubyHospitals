@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Patients</h1>
+  <h1 class="mb-4">Patients</h1>
 
-<div id="patients">
-  <% @patients.each do |patient| %>
-    <%= render patient %>
-    <p>
-      <%= link_to "Show this patient", patient %>
-    </p>
-  <% end %>
+  <div id="patients" class="list-group">
+    <% @patients.each do |patient| %>
+      <div class="list-group-item">
+        <%= render patient %>
+
+        <div>
+          <%= link_to "Show this patient", patient, class: "btn btn-info mt-2" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'New patient', new_patient_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark mt-3' %>
 </div>
-
-<%= link_to "New patient", new_patient_path %>

@@ -1,10 +1,24 @@
-<h1>Editing patient</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Editing Patient</h1>
 
-<%= render "form", patient: @patient %>
+  <%= form_with(model: @patient, local: true) do |f| %>
+    <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this hospital from being saved:</h2>
 
-<br>
+        <ul>
+          <% @patient.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<div>
-  <%= link_to "Show this patient", @patient %> |
-  <%= link_to "Back to patients", patients_path %>
+    <%= render "form", patient: @patient %>
+  <% end %>
+
+  <div class="d-flex">
+    <%= link_to 'Back to patients', hospitals_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark' %>
+  </div>
 </div>

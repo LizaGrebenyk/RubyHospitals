@@ -1,9 +1,23 @@
-<h1>New patient</h1>
+<%= form_with model: @patient, local: true do |f| %>
 
-<%= render "form", patient: @patient %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this hospital from being saved:</h2>
 
-<br>
+      <ul>
+        <% @patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Back to patients", patients_path %>
-</div>
+  <div class="container mt-5">
+    <h1 class="mb-4">New Patient</h1>
+
+    <%= render "form", patient: @patient %>
+
+    <%= link_to 'Back to patients', hospitals_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark' %>
+  </div>
+<% end %>

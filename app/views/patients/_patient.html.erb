@@ -1,4 +1,4 @@
-<div id="<%= dom_id patient %>">
+<div id="<%= dom_id patient %>" class="mb-3">
   <p>
     <strong>Name:</strong>
     <%= patient.name %>
@@ -11,7 +11,6 @@
 
   <p>
     <strong>Date of birth:</strong>
-    <%= patient.date_of_birth %>
+    <%= l(patient.date_of_birth, format: :long) %>
   </p>
-
 </div>

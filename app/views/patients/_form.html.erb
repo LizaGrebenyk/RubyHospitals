@@ -1,6 +1,6 @@
 <%= form_with(model: patient) do |form| %>
   <% if patient.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
 
       <ul>
@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :gender, style: "display: block" %>
-    <%= form.text_field :gender %>
+  <div class="mb-3">
+    <%= form.label :gender, class: 'form-label' %>
+    <%= form.text_field :gender, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :date_of_birth, style: "display: block" %>
-    <%= form.date_field :date_of_birth %>
+  <div class="mb-3">
+    <%= form.label :date_of_birth, class: 'form-label' %>
+    <%= form.date_field :date_of_birth, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

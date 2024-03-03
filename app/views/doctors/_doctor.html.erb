@@ -1,7 +1,11 @@
-<div id="<%= dom_id doctor %>">
+<div id="<%= dom_id doctor %>" class="mb-3">
   <p>
     <strong>Hospital:</strong>
-    <%= doctor.hospital_id %>
+    [<%= doctor.hospital_id %>]
+    <%= doctor.hospital.title %>,
+    <%= doctor.hospital.country %>,
+    <%= doctor.hospital.city %>,
+    <%= doctor.hospital.telephone %>
   </p>
 
   <p>
@@ -18,5 +22,4 @@
     <strong>Phone number:</strong>
     <%= doctor.phone_number %>
   </p>
-
 </div>

@@ -1,8 +1,10 @@
-<!-- app/views/main/index.html.erb -->
-<h1>Welcome to Main Page</h1>
-
-<%= link_to 'Hospitals', hospitals_path %><br>
-<%= link_to 'Doctors', doctors_path %><br>
-<%= link_to 'Patients', patients_path %><br>
-<%= link_to 'Appointments', appointments_path %><br>
-<%= link_to 'Medical Records', medical_records_path %><br>
+<div class="container mt-5">
+  <h1 class="display-4 mb-4">Welcome to Main Page</h1>
+  <div class="list-group">
+    <%= link_to "Hospitals", hospitals_path, class: "list-group-item list-group-item-action fs-4" %>
+    <%= link_to "Doctors", doctors_path, class: "list-group-item list-group-item-action fs-4" %>
+    <%= link_to "Patients", patients_path, class: "list-group-item list-group-item-action fs-4" %>
+    <%= link_to "Appointments", appointments_path, class: "list-group-item list-group-item-action fs-4" %>
+    <%= link_to "Medical Records", medical_records_path, class: "list-group-item list-group-item-action fs-4" %>
+  </div>
+</div>

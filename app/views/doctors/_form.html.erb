@@ -1,37 +1,37 @@
 <%= form_with(model: doctor) do |form| %>
   <% if doctor.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
 
       <ul>
-        <% doctor.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% doctor.errors.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :hospital_id, style: "display: block" %>
-    <%= form.text_field :hospital_id %>
+  <div class="mb-3">
+    <%= form.label :hospital_id, class: 'form-label' %>
+    <%= form.collection_select :hospital_id, Hospital.all, :id, ->(hospital) { "#{hospital.title}, #{hospital.country}, #{hospital.city}, #{hospital.telephone}" }, { prompt: 'Select a hospital' }, { class: 'form-select' } %>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :specialization, style: "display: block" %>
-    <%= form.text_field :specialization %>
+  <div class="mb-3">
+    <%= form.label :specialization, class: 'form-label' %>
+    <%= form.text_field :specialization, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :phone_number, style: "display: block" %>
-    <%= form.text_field :phone_number %>
+  <div class="mb-3">
+    <%= form.label :phone_number, class: 'form-label' %>
+    <%= form.text_field :phone_number, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

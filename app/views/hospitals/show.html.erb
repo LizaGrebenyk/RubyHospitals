@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<%= render @hospital %>
+  <h1>Hospital Details</h1>
 
-<div>
-  <%= link_to "Edit this hospital", edit_hospital_path(@hospital) %> |
-  <%= link_to "Back to hospitals", hospitals_path %>
+  <%= render @hospital %>
 
-  <%= button_to "Destroy this hospital", @hospital, method: :delete %>
+  <div class="d-flex align-items-center gap-2">
+    <%= link_to 'Edit this hospital', edit_hospital_path(@hospital), class: 'btn btn-primary' %>
+    <%= link_to 'Back to hospitals', hospitals_path, class: 'btn btn-secondary' %>
+    <%= button_to 'Destroy this hospital', hospital_path(@hospital), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark' %>
+  </div>
 </div>

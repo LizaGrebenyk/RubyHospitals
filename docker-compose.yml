@@ -15,7 +15,7 @@ services:
     environment:
       RAILS_ENV: development
     ports:
-      - '4000:4000'
+      - '3000:3000'
     volumes:
       - ".:/workspace"
     links:

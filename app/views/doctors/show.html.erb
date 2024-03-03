@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
 
-<%= render @doctor %>
+  <h1>Doctor Details</h1>
 
-<div>
-  <%= link_to "Edit this doctor", edit_doctor_path(@doctor) %> |
-  <%= link_to "Back to doctors", doctors_path %>
+  <%= render @doctor %>
 
-  <%= button_to "Destroy this doctor", @doctor, method: :delete %>
+  <div class="d-flex align-items-center gap-2">
+    <%= link_to 'Edit this doctor', edit_doctor_path(@doctor), class: 'btn btn-primary' %>
+    <%= link_to 'Back to doctors', doctors_path, class: 'btn btn-secondary' %>
+    <%= button_to 'Destroy this doctor', doctor_path(@doctor), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Back to Main Page', root_path, class: 'btn btn-dark' %>
+  </div>
 </div>

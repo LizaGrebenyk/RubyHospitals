@@ -1,6 +1,6 @@
 <%= form_with(model: hospital) do |form| %>
   <% if hospital.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
 
       <ul>
@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :country, style: "display: block" %>
-    <%= form.text_field :country %>
+  <div class="mb-3">
+    <%= form.label :country, class: 'form-label' %>
+    <%= form.text_field :country, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+  <div class="mb-3">
+    <%= form.label :city, class: 'form-label' %>
+    <%= form.text_field :city, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :telephone, style: "display: block" %>
-    <%= form.text_field :telephone %>
+  <div class="mb-3">
+    <%= form.label :telephone, class: 'form-label' %>
+    <%= form.telephone_field :telephone, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
