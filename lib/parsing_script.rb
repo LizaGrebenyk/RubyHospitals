@@ -7,7 +7,9 @@ html = URI.open(url, 'User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; r
 
 doc = Nokogiri::HTML(html)
 
-CSV.open('hospitals.csv', 'wb', write_headers: true,
+csv_file = File.join(File.dirname(__FILE__), '/assets', 'hospitals.csv')
+
+CSV.open(csv_file, 'wb', write_headers: true,
          headers: ["Rank", "Publication name", "Country", "City", "State (US only)"]) do |csv|
   # рядки
   doc.css('tbody tr').each do |row|
