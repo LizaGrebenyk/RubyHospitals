@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <p style="color: green"><%= notice %></p>
+
+  <h1 class="mb-4">Medical records</h1>
+
+  <div id="medical_records" class="list-group">
+    <% @medical_records.each do |medical_record| %>
+      <div class="list-group-item">
+        <%= render medical_record %>
+
+        <div>
+          <%= link_to "Show this medical record", medical_record, class: "btn btn-info mt-2" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'New medical record', new_medical_record_path, class: 'btn btn-primary mt-3' %>
+  <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-dark" %>
+</div>

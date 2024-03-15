@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <h1>Doctor Details</h1>
+
+  <%= render @doctor %>
+
+  <div class="d-flex align-items-center gap-2">
+    <%= link_to 'Edit this doctor', edit_doctor_path(@doctor), class: 'btn btn-primary' %>
+    <%= link_to 'Back to doctors', doctors_path, class: 'btn btn-secondary' %>
+    <%= button_to 'Destroy this doctor', doctor_path(@doctor), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-dark" %>
+  </div>
+</div>

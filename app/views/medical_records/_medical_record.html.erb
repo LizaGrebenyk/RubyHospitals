@@ -1,0 +1,33 @@
+<div id="<%= dom_id medical_record %>" class="mb-3">
+  <p>
+    <strong>Doctor:</strong>
+    [<%= medical_record.doctor_id %>]
+    <%= medical_record.doctor.name %>,
+    <%= medical_record.doctor.specialization %>,
+    <%=  medical_record.doctor.phone_number %>
+  </p>
+
+  <p>
+    <strong>Patient:</strong>
+    [<%= medical_record.patient_id %>]
+    <%= medical_record.patient.name %>,
+    <%= medical_record.patient.gender %>,
+    <%= medical_record.patient.date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= l(medical_record.date, format: :long) %>
+  </p>
+
+  <p>
+    <strong>Diagnosis:</strong>
+    <%= medical_record.diagnosis %>
+  </p>
+
+  <p>
+    <strong>Treatment:</strong>
+    <%= medical_record.treatment %>
+  </p>
+
+</div>

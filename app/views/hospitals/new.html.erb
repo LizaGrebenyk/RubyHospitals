@@ -1,0 +1,23 @@
+<%= form_with model: @hospital, local: true do |f| %>
+
+  <% if @hospital.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
+
+      <ul>
+        <% @hospital.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">New Hospital</h1>
+
+    <%= render "form", hospital: @hospital %>
+
+    <%= link_to 'Back to hospitals', hospitals_path, class: 'btn btn-secondary' %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-dark" %>
+  </div>
+<% end %>

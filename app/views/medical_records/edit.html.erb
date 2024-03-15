@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Editing Medical Record</h1>
+
+  <%= form_with(model: @medical_record, local: true) do |f| %>
+    <% if @medical_record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@medical_record.errors.count, "error") %> prohibited this hospital from being saved:</h2>
+
+        <ul>
+          <% @medical_record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= render "form", medical_record: @medical_record %>
+    <br>
+  <% end %>
+
+  <div class="d-flex">
+    <%= link_to "Back to medical records", medical_records_path, class: "btn btn-secondary" %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-dark" %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hospital Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QD3hZpj1t8RzS2t4LLCjwNf41J0zFvm65nUJ3e3WJw5w5j" crossorigin="anonymous">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <%= yield %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z0I5t9z5lFf5r5lSuidp9u1aoKsnwTP7X7hE5M" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKx2CQsf1PHo/WiC1KpVGpp2OwJYUwLJt7DTaTsy8zK7TIRXBq8Bde" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha384-nZ4J+Ly+P0+Xb5wPRxxJFkQzQe/1d0PzEVTPv6H1z9EpomUIxXp3V8J0B6MFH0zj" crossorigin="anonymous"></script>
+  </body>
+</html>

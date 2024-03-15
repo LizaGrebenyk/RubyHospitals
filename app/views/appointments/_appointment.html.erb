@@ -1,0 +1,23 @@
+<div id="<%= dom_id appointment %>" class="mb-3">
+  <p>
+    <strong>Doctor:</strong>
+    [<%= appointment.doctor_id %>]
+    <%= appointment.doctor.name %>,
+    <%= appointment.doctor.specialization %>,
+    <%=  appointment.doctor.phone_number %>
+  </p>
+
+  <p>
+    <strong>Patient:</strong>
+    [<%= appointment.patient_id %>]
+    <%= appointment.patient.name %>,
+    <%= appointment.patient.gender %>,
+    <%= appointment.patient.date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= l(appointment.date, format: :long) %>
+  </p>
+
+</div>

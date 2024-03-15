@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><span class="navbar-text fw-bold fs-2 text-dark">Hospital Management System</span></a>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+          <% if user_signed_in? %>
+            <%= link_to "Home", root_path, class: "btn btn-primary" %>
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-dark ms-2" %>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <% if user_signed_in? %>
+    <h1 class="display-4 mt-5 mb-4 fs-4">User: <%= current_user.email %></h1>
+    <div class="list-group">
+      <%= link_to "Hospitals", hospitals_path, class: "list-group-item list-group-item-action fs-4" %>
+      <%= link_to "Doctors", doctors_path, class: "list-group-item list-group-item-action fs-4" %>
+      <%= link_to "Patients", patients_path, class: "list-group-item list-group-item-action fs-4" %>
+      <%= link_to "Appointments", appointments_path, class: "list-group-item list-group-item-action fs-4" %>
+      <%= link_to "Medical Records", medical_records_path, class: "list-group-item list-group-item-action fs-4" %>
+    </div>
+  <% else %>
+    <div class="alert alert-danger mt-3" role="alert">
+      You need to sign in to access this page.
+    </div>
+  <% end %>
+</div>

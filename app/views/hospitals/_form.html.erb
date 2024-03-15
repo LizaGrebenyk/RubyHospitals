@@ -1,0 +1,37 @@
+<%= form_with(model: hospital) do |form| %>
+  <% if hospital.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
+
+      <ul>
+        <% hospital.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :country, class: 'form-label' %>
+    <%= form.text_field :country, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :city, class: 'form-label' %>
+    <%= form.text_field :city, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :telephone, class: 'form-label' %>
+    <%= form.telephone_field :telephone, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
