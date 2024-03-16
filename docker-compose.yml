@@ -21,6 +21,16 @@ services:
     links:
       - "mysql"
 
+  app_test:
+    build: .
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: mysql2://root:root@mysql/dev
+    volumes:
+      - ".:/workspace"
+    depends_on:
+      - mysql
+
 volumes:
   dbdata:
   appdata:
