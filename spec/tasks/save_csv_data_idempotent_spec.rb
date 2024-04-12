@@ -7,6 +7,9 @@ RSpec.describe 'data_processing rake tasks', type: :task do
     let(:csv_path) { Rails.root.join('spec', 'fixtures', 'test_hospitals.csv') }
 
     before(:each) do
+      Appointment.delete_all
+      MedicalRecord.delete_all
+      Doctor.delete_all
       Hospital.delete_all
       Rake::Task['data_processing:save_csv_data_in_db'].invoke(csv_path.to_s)
     end
