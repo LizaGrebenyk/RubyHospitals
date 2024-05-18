@@ -29,4 +29,28 @@
   <% else %>
     <h1 class="display-4 mt-5 mb-4 fs-4">Welcome to the Hospital Management System</h1>
   <% end %>
+
+  <div class="container mt-5">
+    <p style="color: green"><%= notice %></p>
+
+    <h1 class="mb-4">Hospitals</h1>
+
+    <div id="hospitals" class="list-group">
+      <% @hospitals.each do |hospital| %>
+        <div class="list-group-item">
+          <%= render partial: 'hospitals/hospital', locals: { hospital: hospital } %>
+          <% if user_signed_in? %>
+            <div>
+              <%= link_to "Show this hospital", hospital, class: "btn btn-info mt-2" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to 'New hospital', new_hospital_path, class: 'btn btn-primary mt-3' %>
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-dark" %>
+  <% end %>
 </div>

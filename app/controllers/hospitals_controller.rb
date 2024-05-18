@@ -1,5 +1,6 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:index]
 
   # GET /hospitals or /hospitals.json
   def index
