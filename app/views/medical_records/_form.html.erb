@@ -13,7 +13,7 @@
 
   <div class="mb-3">
     <%= form.label :doctor_id, class: 'form-label' %>
-    <%= form.collection_select :doctor_id, Doctor.all, :id, ->(doctor) { "#{doctor.name}, #{doctor.specialization}, #{doctor.phone_number}" }, { prompt: 'Select a doctor' }, { class: 'form-select' } %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, ->(doctor) { "#{doctor.name}, #{doctor.specialization}, #{doctor.email}, #{doctor.phone_number}" }, { prompt: 'Select a doctor' }, { class: 'form-select' } %>
   </div>
 
   <div class="mb-3">
