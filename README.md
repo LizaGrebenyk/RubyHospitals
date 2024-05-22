@@ -71,7 +71,16 @@ ER-діаграма:
 ![ERD](docs/erd.png "ER-діаграма")
 
 ## Скрипти
-Перелік та опис
+#### /lib/tasks:
+
+___usage: docker compose exec app ...___
+
+- parsing.rake - зібрати дані про лікарні з сайту https://www.newsweek.com/rankings/worlds-best-hospitals-2023 в csv-файл і наповнити ним базу даних  
+`rake data_processing:parse_data` - розпарсити дані сайту в csv  
+`rake data_processing:save_csv_data_in_db` - наповнити БД з csv-файлу  
+`rake data_processing:all` - розпарсити сайт в csv і з нього заповнити БД  
+- generate_doctors.rake - сгенерувати та додати в БД 100 докторів із почтами домену karazin.ua  
+`rake db:generate_doctors` - наповнити БД 100 записами докторів із почтою karazin.ua 
 
 ## Інструкції щодо встановлення та запуску проекту
 
