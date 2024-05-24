@@ -4,7 +4,11 @@ class HospitalsController < ApplicationController
 
   # GET /hospitals or /hospitals.json
   def index
-    @hospitals = Hospital.all
+    if params[:search].present?
+      @hospitals = HospitalSearchQuery.new(params[:search]).call
+    else
+      @hospitals = Hospital.all
+    end
   end
 
   # GET /hospitals/1 or /hospitals/1.json

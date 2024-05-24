@@ -1,5 +1,7 @@
 class AddEmailToDoctors < ActiveRecord::Migration[7.0]
   def change
-    add_column :doctors, :email, :string
+    unless column_exists? :doctors, :email
+      add_column :doctors, :email, :string
+    end
   end
 end

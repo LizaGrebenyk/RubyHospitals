@@ -31,6 +31,13 @@
   <% end %>
 
   <div class="container mt-5">
+    <%= form_with url: hospitals_path, method: :get, local: true, class: "d-flex mb-4" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Hospitals", class: "form-control me-2" %>
+      <%= submit_tag "Search", class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
+
+  <div class="container mt-5">
     <p style="color: green"><%= notice %></p>
 
     <h1 class="mb-4">Hospitals</h1>
