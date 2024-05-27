@@ -7,6 +7,7 @@
         <div class="navbar-nav ms-auto">
           <% if user_signed_in? %>
             <%= link_to "Dashboard", dashboard_path, class: "btn btn-primary" %>
+            <%= link_to "User Page", user_path(current_user), class: "btn btn-secondary ms-2" %>
             <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-dark ms-2" %>
             <%= button_to "Delete my account", user_registration_path, method: :delete, data: { confirm: "Are you sure you want to delete your account?" }, class: "btn btn-danger ms-2" %>
           <% else %>

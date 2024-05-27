@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <h1 class="mb-4">User Dashboard</h1>
+
+  <div class="mb-4">
+    <%= form_with url: user_medical_records_path(@user), method: :get, local: true do %>
+      <div class="mb-3">
+        <%= label_tag :patient_id, "Select Patient" %>
+        <%= select_tag :patient_id, options_from_collection_for_select(@patients, :id, :name, @selected_patient&.id), prompt: "Choose a patient", class: "form-select" %>
+      </div>
+      <%= submit_tag "View Medical Records", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @selected_patient %>
+    <h2>Medical Records for <%= @selected_patient.name %></h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Doctor</th>
+        <th>Diagnosis</th>
+        <th>Treatment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @medical_records.each do |record| %>
+        <tr>
+          <td><%= record.date %></td>
+          <td><%= record.doctor.name %></td>
+          <td><%= record.diagnosis %></td>
+          <td><%= record.treatment %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
