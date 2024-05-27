@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   get 'users/:id/medical_records', to: 'users#medical_records', as: 'user_medical_records'
+  get 'users/:id/doctor_info', to: 'users#doctor_info', as: 'user_doctor_info'
   # Defines the root path route ("/")
   root "main#index"
 end

@@ -34,4 +34,23 @@
       </tbody>
     </table>
   <% end %>
+
+  <div class="mb-4">
+    <%= form_with url: user_doctor_info_path(@user), method: :get, local: true do %>
+      <div class="mb-3">
+        <%= label_tag :doctor_id, "Select Doctor" %>
+        <%= select_tag :doctor_id, options_from_collection_for_select(@doctors, :id, :name, @selected_doctor&.id), prompt: "Choose a doctor", class: "form-select" %>
+      </div>
+      <%= submit_tag "View Doctor Info", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% if @selected_doctor %>
+    <h2>Doctor Information</h2>
+    <p><strong>Name:</strong> <%= @selected_doctor.name %></p>
+    <p><strong>Specialization:</strong> <%= @selected_doctor.specialization %></p>
+    <p><strong>Hospital:</strong> <%= @doctor_hospital.title %> (<%= @doctor_hospital.city %>, <%= @doctor_hospital.country %>)</p>
+  <% end %>
+
+  <%= link_to 'Back to Main Page', root_path, class: 'btn btn-secondary mt-3' %>
 </div>
