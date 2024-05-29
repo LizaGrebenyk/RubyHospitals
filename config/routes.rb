@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do
       get 'create_patient_appointment'
+      get 'appointments'
     end
   end
   get 'users/:id/medical_records', to: 'users#medical_records', as: 'user_medical_records'
