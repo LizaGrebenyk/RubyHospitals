@@ -1,4 +1,5 @@
 class MedicalRecordsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_medical_record, only: %i[ show edit update destroy ]
 
   # GET /medical_records or /medical_records.json
