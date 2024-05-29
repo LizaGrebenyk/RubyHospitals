@@ -2,9 +2,8 @@
   <% if appointment.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
       <ul>
-        <% appointment.errors.each do |message| %>
+        <% appointment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -16,10 +15,14 @@
     <%= form.collection_select :doctor_id, Doctor.all, :id, ->(doctor) { "#{doctor.name}, #{doctor.specialization}, #{doctor.email}, #{doctor.phone_number}" }, { prompt: 'Select a doctor' }, { class: 'form-select' } %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :patient_id, class: 'form-label' %>
-    <%= form.collection_select :patient_id, Patient.all, :id, ->(patient) { "#{patient.name}, #{patient.gender}, #{patient.date_of_birth}" }, { prompt: 'Select a patient' }, { class: 'form-select' } %>
-  </div>
+  <% if appointment.patient.nil? %>
+    <div class="mb-3">
+      <%= form.label :patient_id, class: 'form-label' %>
+      <%= form.collection_select :patient_id, Patient.all, :id, ->(patient) { "#{patient.name}, #{patient.gender}, #{patient.date_of_birth}" }, { prompt: 'Select a patient' }, { class: 'form-select' } %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :patient_id, value: appointment.patient.id %>
+  <% end %>
 
   <div class="mb-3">
     <%= form.label :date, class: 'form-label' %>
@@ -27,6 +30,6 @@
   </div>
 
   <div class="mb-3">
-    <%= form.submit class: 'btn btn-primary'%>
+    <%= form.submit 'Create Appointment', class: 'btn btn-primary' %>
   </div>
 <% end %>

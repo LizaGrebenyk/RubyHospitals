@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :medical_records, :doctor_info]
+  before_action :set_user, only: [:show, :medical_records, :doctor_info, :create_patient_appointment]
 
   def show
     @patients = Patient.all
@@ -31,6 +31,11 @@ class UsersController < ApplicationController
       @doctor_hospital = nil
     end
     render :show
+  end
+
+  def create_patient_appointment
+    @patient = current_user.patient
+    redirect_to new_appointment_path(patient_id: @patient.id)
   end
 
   private

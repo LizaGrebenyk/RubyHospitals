@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[ show edit update destroy ]
+  before_action :set_patient, only: [:new, :create]
 
   # GET /appointments or /appointments.json
   def index
@@ -12,7 +13,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = Appointment.new
+    @appointment = Appointment.new(patient: @patient)
   end
 
   # GET /appointments/1/edit
@@ -22,6 +23,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments or /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.patient = @patient if @patient.present?
 
     respond_to do |format|
       if @appointment.save
@@ -58,13 +60,18 @@ class AppointmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def appointment_params
-      params.require(:appointment).permit(:doctor_id, :patient_id, :date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def set_patient
+    @patient = Patient.find(params[:patient_id]) if params[:patient_id].present?
+  end
+
+  # Only allow a list of trusted parameters through.
+  def appointment_params
+    params.require(:appointment).permit(:doctor_id, :patient_id, :date, :time, :notes)
+  end
 end
