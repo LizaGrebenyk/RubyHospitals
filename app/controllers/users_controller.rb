@@ -41,25 +41,22 @@ class UsersController < ApplicationController
 
     unless @doctors.present?
       Rails.logger.warn 'No doctors found'
-
-      if params[:patient_id].present?
-        @selected_patient = Patient.find(params[:patient_id])
-        @medical_records = @selected_patient.medical_records
-
-        Rails.logger.debug "Selected patient: #{@selected_patient.name}"
-        Rails.logger.debug "Found #{medical_records.count} medical records for patient #{@selected_patient.name}"
-      else
-        @selected_patient = nil
-        @medical_records = []
-
-        Rails.logger.debug 'No patient selected'
-        Rails.logger.debug 'No medical records found'
-      end
-
-      Rails.logger.debug '== Finished medical_records action =='
-
-      render :show
     end
+
+    if params[:patient_id].present?
+      @selected_patient = Patient.find(params[:patient_id])
+      @medical_records = @selected_patient.medical_records
+    else
+      @selected_patient = nil
+      @medical_records = []
+    end
+
+    Rails.logger.debug "Selected patient: #{@selected_patient&.name}"
+    Rails.logger.debug "Found #{@medical_records&.count} medical records"
+
+    Rails.logger.debug '== Finished medical_records action =='
+
+    render :show
   end
 
   def doctor_info
@@ -73,15 +70,23 @@ class UsersController < ApplicationController
     Rails.logger.debug "Found #{Patient.count} patients"
     Rails.logger.debug "Found #{Doctor.count} doctors"
 
+    unless @patients.present?
+      Rails.logger.warn 'No patients found'
+    end
+
+    unless @doctors.present?
+      Rails.logger.warn 'No doctors found'
+    end
+
     if params[:doctor_id].present?
       @selected_doctor = Doctor.find(params[:doctor_id])
       @doctor_hospital = @selected_doctor.hospital
-
-      Rails.logger.debug "Selected doctor: #{@selected_doctor.name}, Hospital: #{@doctor_hospital}"
     else
       @selected_doctor = nil
       @doctor_hospital = nil
     end
+
+    Rails.logger.debug "Selected doctor: #{@selected_doctor&.name}, Hospital: #{@doctor_hospital&.title}"
 
     Rails.logger.debug '== Finished doctor_info action =='
 
