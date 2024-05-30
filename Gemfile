@@ -85,3 +85,6 @@ gem "nokogiri"
 gem "open-uri"
 
 gem "faker"
+
+gem "ougai"
+gem "amazing_print"

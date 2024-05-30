@@ -5,10 +5,15 @@ class MedicalRecordsController < ApplicationController
   # GET /medical_records or /medical_records.json
   def index
     @medical_records = MedicalRecord.all
+    Rails.logger.debug "=== Fetched #{controller_name} records: #{@medical_records&.count} ==="
+  rescue => e
+    Rails.logger.error "=== Error occurred while fetching #{controller_name} records: #{e.message} ==="
   end
 
   # GET /medical_records/1 or /medical_records/1.json
   def show
+    @medical_record = MedicalRecord.find(params[:id])
+    Rails.logger.info "=== Medical record with ID #{params[:id]} was accessed. ==="
   end
 
   # GET /medical_records/new
@@ -60,9 +65,17 @@ class MedicalRecordsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_medical_record
-      @medical_record = MedicalRecord.find(params[:id])
-    end
+  def set_medical_record
+    @medical_record = MedicalRecord.find(params[:id])
+    Rails.logger.debug "=== Medical record with ID #{params[:id]} was found. ===" if @medical_record
+    raise ActiveRecord::RecordNotFound, "=== Medical record with ID #{params[:id]} not found ===" unless @medical_record
+  rescue ActiveRecord::RecordNotFound => e
+    Rails.logger.error e.message
+    redirect_to medical_records_url, alert: e.message
+  rescue => e
+    Rails.logger.error "=== Error occurred while finding medical record: #{e.message} ==="
+    redirect_to medical_records_url, alert: "An error occurred while finding medical record"
+  end
 
     # Only allow a list of trusted parameters through.
     def medical_record_params

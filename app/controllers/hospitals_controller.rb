@@ -9,10 +9,16 @@ class HospitalsController < ApplicationController
     else
       @hospitals = Hospital.all
     end
+    Rails.logger.info "==== Fetched #{@hospitals&.count} hospitals ===="
+  rescue => e
+    Rails.logger.error "==== Error occurred while fetching hospitals: #{e.message} ===="
   end
 
   # GET /hospitals/1 or /hospitals/1.json
   def show
+    Rails.logger.info "==== Showing details for hospital with ID: #{params[:id]} ===="
+  rescue => e
+    Rails.logger.error "==== Error occurred while showing hospital details: #{e.message} ===="
   end
 
   # GET /hospitals/new
