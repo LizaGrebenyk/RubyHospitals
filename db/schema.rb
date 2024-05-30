@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_18_211121) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_29_203743) do
   create_table "appointments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "doctor_id", null: false
     t.bigint "patient_id", null: false
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_18_211121) do
     t.date "date_of_birth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
